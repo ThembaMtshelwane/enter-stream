@@ -12,22 +12,22 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`border-2 border-black grid items-center text-lg ${navCols} h-fit`}
+      className={` grid items-center text-lg ${navCols} h-fit sm:grid-cols-3 p-4 sm:text-xl md:text-3xl`}
     >
       <Logo styles={`${overlap}`} />
-      {/* <Links styles="hidden justify-items-center justify-self-center max-w-xs" />
+      <Links styles="hidden justify-items-center justify-self-center max-w-xs sm:grid sm:grid-cols-2" />
       <Button
         name="subscribe"
         link="#subscibe"
-        styles=" hidden ml-auto mr-[15%] py-2 px-8"
-      /> */}
+        styles=" hidden ml-auto mr-[15%] py-2 px-8 sm:block"
+      />
 
       {toggleMenu ? (
         <div
-          className={`bg-blue-400 ${overlap} p-5 grid grid-cols-1 grid-rows-[1fr_2fr_1fr]  gap-4`}
+          className={`bg-blue-400 ${overlap} p-5 grid grid-cols-1 grid-rows-[1fr_2fr_1fr]  gap-4 sm:hidden`}
         >
           <button
-            className="border-2 border-black p-2"
+            className="nav-link-border "
             onClick={() => {
               setToggleMenu((prevState) => !prevState);
               seNavCols("grid-cols-2");
@@ -40,12 +40,12 @@ const Navbar = () => {
           <Button
             name="subscribe"
             link="#subscibe"
-            styles="rounded-none border-2 border-black p-2"
+            styles="rounded-none border-2 nav-link-border"
           />
         </div>
       ) : (
         <button
-          className="ml-auto mr-[15%]"
+          className="ml-auto mr-[15%] sm:hidden"
           onClick={() => {
             setToggleMenu((prevState) => !prevState);
             seNavCols("grid-cols-1");
