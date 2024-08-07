@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.nav-link {
+  @apply border-2 grid grid-cols-1 p-2 border-2 border-black;
+}
