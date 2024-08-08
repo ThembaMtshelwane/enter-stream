@@ -11,7 +11,7 @@ const Footer = () => {
       <Links styles="hidden justify-items-center justify-self-center max-w-xs sm:grid sm:grid-cols-2" />
       <Button
         name="subscribe"
-        link="#subscibe"
+        link="/subscibe"
         styles=" hidden ml-auto mr-[15%] py-2 px-8 sm:block"
       />
     </footer>
