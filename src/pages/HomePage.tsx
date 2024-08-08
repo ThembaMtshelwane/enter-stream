@@ -10,7 +10,7 @@ const HomePage = ({ headerStyles, heading }: Props) => {
   return (
     <>
       <Header headerStyles={headerStyles} heading={heading} />
-      <section className="border-2 border-green-700 min-h-screen grid grid-cols-1 grid-rows-2 w-[70%] mx-auto gap-4">
+      <section className="border-2 border-green-700 min-h-screen grid grid-cols-1 grid-rows-2 w-full mx-auto gap-4">
         <ShowMedia link="/movies" name="movies" />
         <ShowMedia link="/series" name="series" />
       </section>

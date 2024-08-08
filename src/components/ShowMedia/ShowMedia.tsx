@@ -1,4 +1,5 @@
 import Button from "../Buttons/Button";
+import MediaGrid from "./MediaGrid";
 
 type Props = {
   link: string;
@@ -7,9 +8,9 @@ type Props = {
 
 const ShowMedia = ({ link, name }: Props) => {
   return (
-    <section className="border-2 border-red-600 max-h-[600px] grid grid-rows-[1fr_10fr_1fr] my-4">
+    <section className="border-2 border-red-600  my-4 h-screen grid grid-cols-1 grid-rows-[70px_10fr_70px] mx-auto sm:grid-rows-[100px_10fr_70px] w-full sm:w-[90%] md:w-[80%] lg:w-[80%]">
       <h1 className="text-center my-auto uppercase">latest {name}</h1>
-      <section className=""></section>
+      <MediaGrid />
       <Button
         name={"more"}
         link={link}
