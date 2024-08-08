@@ -12,7 +12,7 @@ const Navbar = () => {
 
   return (
     <nav
-      className={` grid items-center text-lg ${navCols} h-fit sm:grid-cols-3 p-4 sm:text-xl md:text-3xl`}
+      className={` grid items-center text-lg ${navCols} h-fit sm:grid-cols-3  sm:text-xl md:text-3xl absolute w-full p-4 text-white`}
     >
       <Logo styles={`${overlap}`} logoStyle={"text-blue-600"} />
       <Links styles="hidden justify-items-center justify-self-center max-w-xs sm:grid sm:grid-cols-2" />
@@ -45,7 +45,7 @@ const Navbar = () => {
         </div>
       ) : (
         <button
-          className="ml-auto mr-[15%] sm:hidden"
+          className="ml-auto mr-[15%] sm:hidden text-white"
           onClick={() => {
             setToggleMenu((prevState) => !prevState);
             seNavCols("grid-cols-1");

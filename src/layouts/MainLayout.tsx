@@ -4,11 +4,14 @@ import Footer from "../components/Footer";
 
 const MainLayout = () => {
   return (
-    <>
+    <section className="relative w-full">
       <Navbar />
-      <Outlet />
+      <section className="h-screen ">
+        <header className="  h-[250px] bg-hero-pattern bg-center bg-no-repeat bg-cover"></header>
+        <Outlet />
+      </section>
       <Footer />
-    </>
+    </section>
   );
 };
 
