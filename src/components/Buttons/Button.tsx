@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 type Props = {
   name: string;
   link: string;
@@ -6,12 +8,12 @@ type Props = {
 
 const Button = ({ name, link, styles }: Props) => {
   return (
-    <a
-      href={link}
+    <Link
+      to={link}
       className={`${styles} rounded-full tracking-wider uppercase`}
     >
       {name}
-    </a>
+    </Link>
   );
 };
 

@@ -5,14 +5,18 @@ import {
   RouterProvider,
 } from "react-router-dom";
 
-import HomePage from "./pages/HomePage"; // Home page
+import HomePage from "./pages/HomePage";
 import MainLayout from "./layouts/MainLayout";
+import MoviesPage from "./pages/MoviesPage";
+import SeriesPage from "./pages/SeriesPage";
 
 export default function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={<MainLayout />}>
         <Route index element={<HomePage />} />
+        <Route path="/movies" element={<MoviesPage />} />
+        <Route path="/series" element={<SeriesPage />} />
       </Route>
     )
   ); // Creates router
