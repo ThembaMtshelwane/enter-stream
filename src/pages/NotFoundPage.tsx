@@ -1,11 +1,17 @@
 import { Link } from "react-router-dom";
+import Header from "../components/Header";
 
-const NotFoundPage = () => {
+type Props = {
+  headerStyles: string;
+};
+
+const NotFoundPage = ({ headerStyles }: Props) => {
   return (
-    <section>
+    <>
+      <Header headerStyles={headerStyles} heading="sorry" />
       <h1>404 Not Found</h1>
       <Link to="/">Go home</Link>
-    </section>
+    </>
   );
 };
 

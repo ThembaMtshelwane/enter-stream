@@ -15,10 +15,16 @@ export default function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={<MainLayout />}>
-        <Route index element={<HomePage />} />
+        <Route
+          index
+          element={
+            <HomePage heading="Welcome" headerStyles={"bg-hero-pattern"} />
+          }
+        />
+
         <Route path="/movies" element={<MoviesPage />} />
         <Route path="/series" element={<SeriesPage />} />
-        <Route path="/*" element={<NotFoundPage />} />
+        <Route path="/*" element={<NotFoundPage headerStyles="bg-black" />} />
       </Route>
     )
   ); // Creates router
