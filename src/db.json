@@ -1,0 +1,149 @@
+{
+  "movies": [
+    {
+      "name": "Avengers: Endgame",
+      "description": "After the devastating events of Avengers: Infinity War (2018), the universe is in ruins. With the help of remaining allies, the Avengers assemble once more in order to reverse Thanos' actions and restore balance to the universe.",
+      "country": "United States of America",
+      "year": "2019",
+      "imageURL": "",
+      "type": "movie"
+    },
+    {
+      "name": "A Hidden Life",
+      "description": "The Austrian Franz Jägerstätter, a conscientious objector, refuses to fight for the Nazis in World War II.",
+      "country": "United States of America",
+      "year": "2019",
+      "imageURL": "",
+      "type": "movie"
+    },
+    {
+      "name": "The Death of Dick Long",
+      "description": "Dick died last night, and Zeke and Earl don't want anybody finding out how. That's too bad though, cause news travels fast in small-town Alabama.",
+      "country": "United States of America",
+      "year": "2019",
+      "imageURL": "",
+      "type": "movie"
+    },
+    {
+      "name": "The Nightingale",
+      "description": "Set in 1825, Clare, a young Irish convict woman, chases a British officer through the rugged Tasmanian wilderness, bent on revenge for a terrible act of violence he committed against her family. On the way she enlists the services of an Aboriginal tracker named Billy, who is also marked by trauma from his own violence-filled past.",
+      "country": "Australia",
+      "year": "2018",
+      "type": "movie"
+    },
+    {
+      "name": "Joker",
+      "description": "Arthur Fleck, a party clown and a failed stand-up comedian, leads an impoverished life with his ailing mother. However, when society shuns him and brands him as a freak, he decides to embrace the life of crime and chaos in Gotham City.",
+      "country": "United States of America",
+      "year": "2019",
+      "imageURL": "",
+      "type": "movie"
+    },
+    {
+      "name": "Wonder Woman 1984",
+      "description": "Wonder Woman finds herself battling two opponents, Maxwell Lord, a shrewd entrepreneur, and Barbara Minerva, a friend-turned-foe. Meanwhile, she also ends up crossing paths with her love interest",
+      "country": "United States of America",
+      "year": "2020",
+      "imageURL": "",
+      "type": "movie"
+    },
+    {
+      "name": "John Wick: Chapter 3 - Parabellum",
+      "description": "John Wick is on the run after killing a member of the international assassins' guild, and with a $14 million price tag on his head, he is the target of hit men and women everywhere.",
+      "country": "United States of America",
+      "year": "2019",
+      "imageURL": "",
+      "type": "movie"
+    },
+    {
+      "name": "Us",
+      "description": "In order to get away from their busy lives, the Wilson family takes a vacation to Santa Cruz, California. At night, four strangers break into Adelaide's childhood home. The family is shocked to find out that the intruders look like them.",
+      "country": "United States of America",
+      "year": "2019",
+      "type": "movie"
+    }
+  ],
+  "series": [
+    {
+      "name": "LOKI",
+      "description": "The mercurial villain Loki resumes his role as the God of Mischief in a new series that takes place after the events of “Avengers: Endgame.”",
+      "country": "United States of America",
+      "run": "2021-2023",
+      "type": "series",
+      "imageURL": "",
+      "seasons": "2"
+    },
+    {
+      "name": "Rick and Morty",
+      "description": "The fractured domestic lives of a nihilistic mad scientist and his anxious grandson are further complicated by their inter-dimensional misadventures.",
+      "country": "United States of America",
+      "run": "2013-present",
+      "type": "series",
+      "imageURL": "",
+      "seasons": "6"
+    },
+    {
+      "name": "Sense8",
+      "description": "A group of people around the world are suddenly linked mentally, and must find a way to survive being hunted by those who see them as a threat to the world's order.",
+      "country": "United States of America",
+      "run": "2015-2018",
+      "type": "series",
+      "imageURL": "",
+      "seasons": "2"
+    },
+    {
+      "name": "How To Get Away With Murder",
+      "description": "A group of ambitious law students and their brilliant criminal defense professor become involved in a twisted murder plot that promises to change the course of their lives.”",
+      "country": "United States of America",
+      "run": "2014-2020",
+      "type": "series",
+      "imageURL": "",
+      "seasons": "6"
+    },
+    {
+      "name": "1899",
+      "description": "Multinational immigrants traveling from the old continent to the new encounter a nightmarish riddle aboard a second ship adrift on the open sea.",
+      "country": "Germany",
+      "run": "2022",
+      "type": "series",
+      "imageURL": "",
+      "seasons": "1"
+    },
+    {
+      "name": "The Magicians",
+      "description": "After being recruited to a secretive academy, a group of students discovers that the magic they read about as children is very real--and more dangerous than they ever imagined.”",
+      "country": "United States of America",
+      "run": "2015-2020",
+      "type": "series",
+      "imageURL": "",
+      "seasons": "5"
+    },
+    {
+      "name": "The Orville",
+      "description": "Set 400 years in the future, the crew of the U.S.S. Orville continue their mission of exploration, navigating both the mysteries of the universe, and the complexities of their own interpersonal relationships.",
+      "country": "United States of America",
+      "run": "2017-2022",
+      "type": "series",
+      "imageURL": "",
+      "seasons": "3"
+    },
+    {
+      "name": "Supa Strikas",
+      "description": "About the world's greatest football team. Despite their enormous talent, the players must adapt in a game where being the best is only the beginning, and where the opposition is always full of surprises.",
+      "country": "Malaysia South Africa",
+      "run": "2008-present",
+      "type": "series",
+      "imageURL": "",
+      "seasons": "7"
+    },
+    {
+      "name": "Love, Death & Robots",
+      "description": "The mercurial villain Loki resumes his role as the God of Mischief in a new series that takes place after the events of “Avengers: Endgame.”",
+      "country": "United States of America",
+      "run": "2019-present",
+      "type": "series",
+      "imageURL": "",
+      "seasons": "3"
+    }
+  ]
+}
