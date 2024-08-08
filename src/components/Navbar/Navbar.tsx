@@ -14,7 +14,7 @@ const Navbar = () => {
     <nav
       className={` grid items-center text-lg ${navCols} h-fit sm:grid-cols-3 p-4 sm:text-xl md:text-3xl`}
     >
-      <Logo styles={`${overlap}`} />
+      <Logo styles={`${overlap}`} logoStyle={"text-blue-600"} />
       <Links styles="hidden justify-items-center justify-self-center max-w-xs sm:grid sm:grid-cols-2" />
       <Button
         name="subscribe"
