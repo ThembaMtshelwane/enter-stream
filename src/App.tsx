@@ -9,6 +9,7 @@ import HomePage from "./pages/HomePage";
 import MainLayout from "./layouts/MainLayout";
 import MoviesPage from "./pages/MoviesPage";
 import SeriesPage from "./pages/SeriesPage";
+import NotFoundPage from "./pages/NotFoundPage";
 
 export default function App() {
   const router = createBrowserRouter(
@@ -17,6 +18,7 @@ export default function App() {
         <Route index element={<HomePage />} />
         <Route path="/movies" element={<MoviesPage />} />
         <Route path="/series" element={<SeriesPage />} />
+        <Route path="/*" element={<NotFoundPage />} />
       </Route>
     )
   ); // Creates router
