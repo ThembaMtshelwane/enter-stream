@@ -1,4 +1,4 @@
-import Button from "./Buttons/Button";
+import { Link } from "react-router-dom";
 import Links from "./Navbar/Links";
 import Logo from "./Navbar/Logo";
 
@@ -9,11 +9,12 @@ const Footer = () => {
     >
       <Logo styles="" logoStyle={""} />
       <Links styles="hidden justify-items-center justify-self-center max-w-xs sm:grid sm:grid-cols-2" />
-      <Button
-        name="subscribe"
-        link="/subscibe"
-        styles=" hidden ml-auto mr-[15%] py-2 px-8 sm:block"
-      />
+      <Link
+        to="/subscibe"
+        className="hidden ml-auto mr-[15%] py-2 px-8 sm:block uppercase"
+      >
+        subscribe
+      </Link>
     </footer>
   );
 };

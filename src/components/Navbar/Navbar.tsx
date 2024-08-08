@@ -19,7 +19,7 @@ const Navbar = () => {
       <Button
         name="subscribe"
         link="/subscibe"
-        styles=" hidden ml-auto mr-[15%] py-2 px-8 sm:block"
+        styles=" hidden ml-auto mr-[15%] py-2 px-8 sm:block bg-button"
       />
 
       {toggleMenu ? (

@@ -9,6 +9,10 @@ body {
   font-style: normal;
 }
 
+.bg-button {
+  @apply bg-[#7379FF];
+}
+
 .nav-link {
   @apply grid grid-cols-1;
 }
