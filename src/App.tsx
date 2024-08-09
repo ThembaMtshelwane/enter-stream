@@ -10,6 +10,7 @@ import MainLayout from './layouts/MainLayout'
 import MoviesPage from './pages/MoviesPage'
 import SeriesPage from './pages/SeriesPage'
 import NotFoundPage from './pages/NotFoundPage'
+import AddPage from './pages/AddPage'
 
 export default function App() {
   const router = createBrowserRouter(
@@ -19,6 +20,7 @@ export default function App() {
 
         <Route path="/movies" element={<MoviesPage />} />
         <Route path="/series" element={<SeriesPage />} />
+        <Route path="/add" element={<AddPage />} />
         <Route path="/*" element={<NotFoundPage headerStyles="bg-black" />} />
       </Route>
     )

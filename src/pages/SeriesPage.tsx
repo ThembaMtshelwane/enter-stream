@@ -8,7 +8,7 @@ const SeriesPage = () => {
       <Header headerStyles="bg-blue-400" heading={'latest series'} />
 
       <ContentLayout gridStyles={'grid-cols-1'}>
-        <ShowAllMedia link={'/add'} />
+        <ShowAllMedia/>
       </ContentLayout>
     </>
   )
