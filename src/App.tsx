@@ -3,13 +3,13 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
   RouterProvider,
-} from "react-router-dom";
+} from 'react-router-dom'
 
-import HomePage from "./pages/HomePage";
-import MainLayout from "./layouts/MainLayout";
-import MoviesPage from "./pages/MoviesPage";
-import SeriesPage from "./pages/SeriesPage";
-import NotFoundPage from "./pages/NotFoundPage";
+import HomePage from './pages/HomePage'
+import MainLayout from './layouts/MainLayout'
+import MoviesPage from './pages/MoviesPage'
+import SeriesPage from './pages/SeriesPage'
+import NotFoundPage from './pages/NotFoundPage'
 
 export default function App() {
   const router = createBrowserRouter(
@@ -18,7 +18,7 @@ export default function App() {
         <Route
           index
           element={
-            <HomePage heading="Welcome" headerStyles={"bg-hero-pattern"} />
+            <HomePage heading="Welcome" headerStyles={'bg-hero-pattern'} />
           }
         />
 
@@ -27,6 +27,6 @@ export default function App() {
         <Route path="/*" element={<NotFoundPage headerStyles="bg-black" />} />
       </Route>
     )
-  ); // Creates router
-  return <RouterProvider router={router} />;
+  ) // Creates router
+  return <RouterProvider router={router} />
 }
