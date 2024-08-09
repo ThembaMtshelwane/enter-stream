@@ -1,16 +1,19 @@
 import { useEffect, useState } from 'react'
 import { MediaData } from '../../definitions'
 
-type Props = { type: string }
+type Props = { type: string; isHome?: boolean }
 
-const MediaGrid = ({ type }: Props) => {
+const MediaGrid = ({ type, isHome = false }: Props) => {
   const [mediaData, setMediaData] = useState([])
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
     const fetchMedia = async () => {
       try {
-        const res = await fetch(`http://localhost:8080/${type}/`)
+        const apiURL = isHome
+          ? `http://localhost:8080/${type}?_limit=8`
+          : `http://localhost:8080/${type}/`
+        const res = await fetch(apiURL)
         const data = await res.json()
         setMediaData(data)
       } catch (error) {
@@ -25,7 +28,7 @@ const MediaGrid = ({ type }: Props) => {
   console.log(`http://localhost:8080/${type}/`)
   const media = mediaData.map((media: MediaData) => {
     return (
-      <section key={media.id} className="h-full border-2 border-red-800">
+      <section key={media.id} className="h-[300px] border-2 border-red-800">
         {media.name}
       </section>
     )
@@ -33,7 +36,8 @@ const MediaGrid = ({ type }: Props) => {
 
   return (
     <section className="grid grid-cols-1 grid-rows-2 gap-2 items-center sm:grid-cols-2 sm:grid-row-2 md:grid-cols-3 lg:grid-cols-4">
-      {media}
+      {isLoading ? <h2 className="text-6xl">Loading...</h2> : media}
+      {/* replace with Spinner */}
     </section>
   )
 }
