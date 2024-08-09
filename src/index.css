@@ -3,10 +3,20 @@
 @tailwind utilities;
 
 body {
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif;
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
+}
+
+input,
+textarea,
+select {
+  @apply w-full border-2 py-2 px-1 rounded-lg;
+}
+
+label p {
+  @apply mb-1;
 }
 
 .bg-button {
