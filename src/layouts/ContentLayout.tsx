@@ -1,12 +1,12 @@
 type Props = {
   children: any
-  styles: string
+  gridStyles: string
 }
 
-const ContentLayout = ({ children, styles }: Props) => {
+const ContentLayout = ({ children, gridStyles }: Props) => {
   return (
     <section
-      className={`border-2 border-green-700 min-h-screen grid w-full mx-auto ${styles}`}
+      className={`border-2 border-green-700 min-h-screen grid w-full mx-auto ${gridStyles}`}
     >
       {children}
     </section>

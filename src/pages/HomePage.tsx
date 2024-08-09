@@ -1,20 +1,15 @@
 import Header from '../components/Header'
-import ShowMedia from '../components/ShowMedia/ShowMedia'
+import ShowSomeMedia from '../components/ShowMedia/ShowSomeMedia'
 import ContentLayout from '../layouts/ContentLayout'
 
-type Props = {
-  headerStyles: string
-  heading: string
-}
-
-const HomePage = ({ headerStyles, heading }: Props) => {
+const HomePage = () => {
   return (
     <>
-      <Header headerStyles={headerStyles} heading={heading} />
-      {/* Home Page layout */}
-      <ContentLayout styles="grid-cols-1 grid-rows-2 gap-4">
-        <ShowMedia link="/movies" name="movies" />
-        <ShowMedia link="/series" name="series" />
+      <Header headerStyles="bg-hero-pattern" heading="welcome" />
+      {/* Home Page layout  2by1 */}
+      <ContentLayout gridStyles="grid-cols-1 grid-rows-2 gap-4">
+        <ShowSomeMedia link="/movies" name="movies" />
+        <ShowSomeMedia link="/series" name="series" />
       </ContentLayout>
     </>
   )
