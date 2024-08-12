@@ -8,8 +8,8 @@ const HomePage = () => {
       <Header headerStyles="bg-hero-pattern" heading="welcome" />
       {/* Home Page layout  2by1 */}
       <ContentLayout gridStyles="grid-cols-1 grid-rows-2 gap-4">
-        <ShowSomeMedia link="/movies" name="movies" />
-        <ShowSomeMedia link="/series" name="series" />
+        <ShowSomeMedia link="/movies" name="movies" type="movies" />
+        <ShowSomeMedia link="/series" name="series" type="series" />
       </ContentLayout>
     </>
   )

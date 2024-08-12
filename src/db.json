@@ -1,12 +1,13 @@
 {
-  "media": [
+  "movies": [
     {
       "name": "Avengers: Endgame",
       "description": "After the devastating events of Avengers: Infinity War (2018), the universe is in ruins. With the help of remaining allies, the Avengers assemble once more in order to reverse Thanos' actions and restore balance to the universe.",
       "country": "United States of America",
       "year": "2019",
       "imageURL": "",
-      "type": "movie"
+      "type": "movie",
+      "id": "1"
     },
     {
       "name": "A Hidden Life",
@@ -14,7 +15,8 @@
       "country": "United States of America",
       "year": "2019",
       "imageURL": "",
-      "type": "movie"
+      "type": "movie",
+      "id": "2"
     },
     {
       "name": "The Death of Dick Long",
@@ -22,14 +24,16 @@
       "country": "United States of America",
       "year": "2019",
       "imageURL": "",
-      "type": "movie"
+      "type": "movie",
+      "id": "3"
     },
     {
       "name": "The Nightingale",
       "description": "Set in 1825, Clare, a young Irish convict woman, chases a British officer through the rugged Tasmanian wilderness, bent on revenge for a terrible act of violence he committed against her family. On the way she enlists the services of an Aboriginal tracker named Billy, who is also marked by trauma from his own violence-filled past.",
       "country": "Australia",
       "year": "2018",
-      "type": "movie"
+      "type": "movie",
+      "id": "4"
     },
     {
       "name": "Joker",
@@ -37,7 +41,8 @@
       "country": "United States of America",
       "year": "2019",
       "imageURL": "",
-      "type": "movie"
+      "type": "movie",
+      "id": "5"
     },
     {
       "name": "Wonder Woman 1984",
@@ -45,7 +50,8 @@
       "country": "United States of America",
       "year": "2020",
       "imageURL": "",
-      "type": "movie"
+      "type": "movie",
+      "id": "6"
     },
     {
       "name": "John Wick: Chapter 3 - Parabellum",
@@ -53,15 +59,19 @@
       "country": "United States of America",
       "year": "2019",
       "imageURL": "",
-      "type": "movie"
+      "type": "movie",
+      "id": "7"
     },
     {
       "name": "Us",
       "description": "In order to get away from their busy lives, the Wilson family takes a vacation to Santa Cruz, California. At night, four strangers break into Adelaide's childhood home. The family is shocked to find out that the intruders look like them.",
       "country": "United States of America",
       "year": "2019",
-      "type": "movie"
-    },
+      "type": "movie",
+      "id": "8"
+    }
+  ],
+  "series": [
     {
       "name": "LOKI",
       "description": "The mercurial villain Loki resumes his role as the God of Mischief in a new series that takes place after the events of “Avengers: Endgame.”",
@@ -69,7 +79,8 @@
       "run": "2021-2023",
       "type": "series",
       "imageURL": "",
-      "seasons": "2"
+      "seasons": "2",
+      "id": "1"
     },
     {
       "name": "Rick and Morty",
@@ -78,7 +89,8 @@
       "run": "2013-present",
       "type": "series",
       "imageURL": "",
-      "seasons": "6"
+      "seasons": "6",
+      "id": "2"
     },
     {
       "name": "Sense8",
@@ -87,7 +99,8 @@
       "run": "2015-2018",
       "type": "series",
       "imageURL": "",
-      "seasons": "2"
+      "seasons": "2",
+      "id": "3"
     },
     {
       "name": "How To Get Away With Murder",
@@ -96,7 +109,8 @@
       "run": "2014-2020",
       "type": "series",
       "imageURL": "",
-      "seasons": "6"
+      "seasons": "6",
+      "id": "4"
     },
     {
       "name": "1899",
@@ -105,7 +119,8 @@
       "run": "2022",
       "type": "series",
       "imageURL": "",
-      "seasons": "1"
+      "seasons": "1",
+      "id": "5"
     },
     {
       "name": "The Magicians",
@@ -114,7 +129,8 @@
       "run": "2015-2020",
       "type": "series",
       "imageURL": "",
-      "seasons": "5"
+      "seasons": "5",
+      "id": "6"
     },
     {
       "name": "The Orville",
@@ -123,7 +139,8 @@
       "run": "2017-2022",
       "type": "series",
       "imageURL": "",
-      "seasons": "3"
+      "seasons": "3",
+      "id": "7"
     },
     {
       "name": "Supa Strikas",
@@ -132,7 +149,8 @@
       "run": "2008-present",
       "type": "series",
       "imageURL": "",
-      "seasons": "7"
+      "seasons": "7",
+      "id": "8"
     },
     {
       "name": "Love, Death & Robots",
@@ -141,7 +159,8 @@
       "run": "2019-present",
       "type": "series",
       "imageURL": "",
-      "seasons": "3"
+      "seasons": "3",
+      "id": "9"
     }
   ]
 }
