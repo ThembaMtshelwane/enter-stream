@@ -1,5 +1,5 @@
 {
-  "movies": [
+  "media": [
     {
       "name": "Avengers: Endgame",
       "description": "After the devastating events of Avengers: Infinity War (2018), the universe is in ruins. With the help of remaining allies, the Avengers assemble once more in order to reverse Thanos' actions and restore balance to the universe.",
@@ -61,9 +61,7 @@
       "country": "United States of America",
       "year": "2019",
       "type": "movie"
-    }
-  ],
-  "series": [
+    },
     {
       "name": "LOKI",
       "description": "The mercurial villain Loki resumes his role as the God of Mischief in a new series that takes place after the events of “Avengers: Endgame.”",

@@ -1,7 +1,7 @@
 type Props = {
-  children: any
-  gridStyles: string
-}
+  children: React.ReactNode;
+  gridStyles: string;
+};
 
 const ContentLayout = ({ children, gridStyles }: Props) => {
   return (
@@ -10,6 +10,6 @@ const ContentLayout = ({ children, gridStyles }: Props) => {
     >
       {children}
     </section>
-  )
-}
-export default ContentLayout
+  );
+};
+export default ContentLayout;
