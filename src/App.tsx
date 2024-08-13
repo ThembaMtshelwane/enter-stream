@@ -17,7 +17,11 @@ import { MediaData } from "./definitions";
 export default function App() {
   // Add media
   const addMedia = async (newMedia: MediaData) => {
-    const res = await fetch(`http://localhost:8080/${newMedia.type}`, {
+    let serverURL = `http://localhost:8080/${newMedia.type}`;
+    if (newMedia.type === "movie") {
+      serverURL = `http://localhost:8080/movies`;
+    }
+    const res = await fetch(serverURL, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -29,7 +33,11 @@ export default function App() {
 
   //delete media
   const deleteMedia = async (id: string, type: string) => {
-    const res = fetch(`/api/${type}/${id}`, {
+    let serverURL = `http://localhost:8080/${type}/${id}`;
+    if (type === "movie") {
+      serverURL = `/api/movies/${id}`;
+    }
+    const res = fetch(serverURL, {
       method: "DELETE",
     });
     return;

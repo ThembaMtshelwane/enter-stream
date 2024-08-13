@@ -23,6 +23,11 @@ const SingleMediaPage = ({ deleteMedia }: Props) => {
     if (!confirm) return;
 
     deleteMedia(id, type);
+    if (type === "movie") {
+      return navigate(`/movies`);
+    }
+
+    toast.success(`${type} deleted successfully `);
     return navigate(`/${type}`);
   };
   return (

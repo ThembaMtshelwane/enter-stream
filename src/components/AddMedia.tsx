@@ -51,6 +51,9 @@ const AddMedia = ({ addMediaSubmit }: Props) => {
 
     if (isMediaData(payload)) {
       addMediaSubmit(payload);
+      if (payload.type === "movie") {
+        return navigate(`/movies`);
+      }
       navigate(`/${payload.type}`);
     } else {
       console.error("Invalid payload", payload);
