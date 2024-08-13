@@ -45,7 +45,6 @@ const SingleMediaPage = () => {
 };
 
 const mediaLoader = async ({ params }: { params: Params }) => {
-  // const res = await fetch(`http://localhost:8080/${params.type}/${params.id}`);
   const res = await fetch(`/api/${params.type}/${params.id}`);
   const data: MediaData = await res.json();
   return data;
