@@ -27,19 +27,13 @@ const MediaGrid = ({ type, isHome = false }: Props) => {
 
   const media = mediaData.map((media: MediaData) => {
     return (
-      <section key={media.id} className="h-[420px] border-2 border-red-800">
-        <Link
-          key={media.name}
-          to={`/${type}/${media.id}`}
-          className="flex h-full  object-cover justify-center border-2 border-green-900"
-        >
-          <img
-            src={media.imageURL}
-            alt={media.name}
-            className="w-[90%] h-full"
-          />
-        </Link>
-      </section>
+      <Link to={`/${type}/${media.id}`} key={media.id} className="m-2">
+        <img
+          src={media.imageURL}
+          alt={media.name}
+          className="h-[400px] object-cover"
+        />
+      </Link>
     )
   })
 
