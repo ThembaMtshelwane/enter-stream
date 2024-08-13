@@ -15,6 +15,7 @@ import SingleMediaPage, { mediaLoader } from "./pages/SingleMediaPage";
 import { MediaData } from "./definitions";
 
 export default function App() {
+  // Add media
   const addMedia = async (newMedia: MediaData) => {
     const res = await fetch(`http://localhost:8080/${newMedia.type}`, {
       method: "POST",
@@ -22,6 +23,14 @@ export default function App() {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(newMedia),
+    });
+    return;
+  };
+
+  //delete media
+  const deleteMedia = async (id: string, type: string) => {
+    const res = fetch(`/api/${type}/${id}`, {
+      method: "DELETE",
     });
     return;
   };
@@ -36,7 +45,7 @@ export default function App() {
         <Route path="/add" element={<AddPage addMediaSubmit={addMedia} />} />
         <Route
           path="/:type/:id"
-          element={<SingleMediaPage />}
+          element={<SingleMediaPage deleteMedia={deleteMedia} />}
           loader={mediaLoader}
         />
         <Route path="/*" element={<NotFoundPage headerStyles="bg-black" />} />

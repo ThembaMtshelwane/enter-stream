@@ -2,15 +2,29 @@ import ContentLayout from "../layouts/ContentLayout";
 import Header from "../components/Header";
 import { useLoaderData } from "react-router-dom";
 import { MediaData } from "../definitions";
+import { useNavigate } from "react-router-dom";
 
 type Params = {
   id: string;
   type: string;
 };
 
-const SingleMediaPage = () => {
-  const media = useLoaderData() as MediaData;
+type Props = {
+  deleteMedia: (id: string, type: string) => void;
+};
 
+const SingleMediaPage = ({ deleteMedia }: Props) => {
+  const media = useLoaderData() as MediaData;
+  const navigate = useNavigate();
+  const onDeleteClick = (id: string, type: string) => {
+    const confirm = window.confirm(
+      `Are you sure you want to delete this ${type} `
+    );
+    if (!confirm) return;
+
+    deleteMedia(id, type);
+    return navigate(`/${type}`);
+  };
   return (
     <>
       <Header headerStyles="bg-purple-200" heading={media.name} />
@@ -34,7 +48,12 @@ const SingleMediaPage = () => {
               </div>
               <div className="flex">
                 <button className="general-button mr-5">Edit</button>
-                <button className="general-button">Delete</button>
+                <button
+                  onClick={() => onDeleteClick(media.id, media.type)}
+                  className="general-button"
+                >
+                  Delete
+                </button>
               </div>
             </div>
           </section>
