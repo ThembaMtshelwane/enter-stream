@@ -1,49 +1,20 @@
-import ContentLayout from '../layouts/ContentLayout'
-import Header from '../components/Header'
-import { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
-import { MediaData } from '../definitions'
+import ContentLayout from "../layouts/ContentLayout";
+import Header from "../components/Header";
+import { useLoaderData } from "react-router-dom";
+import { MediaData } from "../definitions";
 
-type Props = {
-  type: string
-}
+type Params = {
+  id: string;
+  type: string;
+};
 
-const SingleMediaPage = ({ type }: Props) => {
-  const { id } = useParams()
-  const [media, setMediaData] = useState<MediaData>({
-    name: '',
-    description: '',
-    id: '',
-    country: '',
-    imageURL: '',
-    type: '',
-    year: '',
-    genre: [],
-  })
-  const [isLoading, setIsLoading] = useState(true)
-
-  useEffect(() => {
-    const fetchSingleMedia = async () => {
-      try {
-        const res = await fetch(`http://localhost:8080/${type}/${id}`)
-        console.log(type)
-
-        const data = await res.json()
-        setMediaData(data)
-        console.log(data)
-      } catch (error) {
-        console.log('Error fetching data', error)
-      } finally {
-        setIsLoading(false)
-      }
-    }
-    fetchSingleMedia()
-  }, [])
+const SingleMediaPage = () => {
+  const media = useLoaderData() as MediaData;
 
   return (
     <>
       <Header headerStyles="bg-purple-200" heading={media.name} />
-      <ContentLayout gridStyles={'grid-cols-1'}>
+      <ContentLayout gridStyles={"grid-cols-1"}>
         <section className="border-2 border-blue-600 min-h-screen h-[110vh] flex items-center my-4 mx-auto w-full sm:w-[90%] md:w-[80%] lg:w-[80%]">
           <section className="border-2 border-red-800 h-screen flex flex-col  md:flex-row ">
             <img
@@ -70,7 +41,13 @@ const SingleMediaPage = ({ type }: Props) => {
         </section>
       </ContentLayout>
     </>
-  )
-}
+  );
+};
 
-export default SingleMediaPage
+const mediaLoader = async ({ params }: { params: Params }) => {
+  const res = await fetch(`http://localhost:8080/${params.type}/${params.id}`);
+  const data: MediaData = await res.json();
+  return data;
+};
+
+export { SingleMediaPage as default, mediaLoader };
