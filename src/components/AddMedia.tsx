@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { FaPlus } from "react-icons/fa";
 import { CountryData, isMediaData, MediaData } from "../definitions";
-import { generateYearRange, sortCountries } from "../utilis";
+import { generateYearRange, sortCountries } from "../utils";
 import { useNavigate } from "react-router-dom";
 
 type Props = {
@@ -60,9 +60,9 @@ const AddMedia = ({ addMediaSubmit }: Props) => {
     }
   };
 
-  const oderedCountryList = sortCountries(countries);
+  const orderedCountryList = sortCountries(countries);
 
-  const countriesOptions = oderedCountryList.map((country: CountryData) => {
+  const countriesOptions = orderedCountryList.map((country: CountryData) => {
     return (
       <option key={country.name.common} value={country.name.common}>
         {country.name.common}

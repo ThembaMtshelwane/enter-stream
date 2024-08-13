@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { CountryData, isMediaData, MediaData } from "../definitions";
 import { FaPlus } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-import { sortCountries, generateYearRange } from "../utilis";
+import { sortCountries, generateYearRange } from "../utils";
 
 type Props = {
   oldData: MediaData;
