@@ -12,6 +12,7 @@ import SeriesPage from "./pages/SeriesPage";
 import NotFoundPage from "./pages/NotFoundPage";
 import AddPage from "./pages/AddPage";
 import SingleMediaPage, { mediaLoader } from "./pages/SingleMediaPage";
+import EditPage from "./pages/EditPage";
 import { MediaData } from "./definitions";
 
 export default function App() {
@@ -43,6 +44,21 @@ export default function App() {
     return;
   };
 
+  const editMedia = async (updatedMedia: MediaData) => {
+    let serverURL = `http://localhost:8080/${updatedMedia.type}/${updatedMedia.id}`;
+    if (updatedMedia.type === "movie") {
+      serverURL = `http://localhost:8080/movies/${updatedMedia.id}`;
+    }
+    const res = await fetch(serverURL, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(updatedMedia),
+    });
+    return;
+  };
+
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={<MainLayout />}>
@@ -54,6 +70,11 @@ export default function App() {
         <Route
           path="/:type/:id"
           element={<SingleMediaPage deleteMedia={deleteMedia} />}
+          loader={mediaLoader}
+        />
+        <Route
+          path="/edit/:type/:id"
+          element={<EditPage editMediaSubmit={editMedia} />}
           loader={mediaLoader}
         />
         <Route path="/*" element={<NotFoundPage headerStyles="bg-black" />} />
