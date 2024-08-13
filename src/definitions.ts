@@ -30,3 +30,8 @@ export interface Series {
   run: string;
   seasons: string;
 }
+
+export interface CountryData {
+  name: { common: string };
+  code: string;
+}
