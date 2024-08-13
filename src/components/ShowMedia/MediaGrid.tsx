@@ -31,7 +31,7 @@ const MediaGrid = ({ type, isHome = false }: Props) => {
         <img
           src={media.imageURL}
           alt={media.name}
-          className="h-[400px] object-cover"
+          className="h-[400px] object-cover w-[350px] mx-auto"
         />
       </Link>
     )
