@@ -1,15 +1,20 @@
-import AddMedia from '../components/AddMedia'
-import Header from '../components/Header'
-import ContentLayout from '../layouts/ContentLayout'
+import AddMedia from "../components/AddMedia";
+import Header from "../components/Header";
+import { MediaData } from "../definitions";
+import ContentLayout from "../layouts/ContentLayout";
 
-const AddPage = () => {
+type Props = {
+  addMediaSubmit: (data: MediaData) => void;
+};
+
+const AddPage = ({ addMediaSubmit }: Props) => {
   return (
     <>
       <Header headerStyles="bg-blue-200" heading="Add Movie/Series" />
       <ContentLayout gridStyles="">
-        <AddMedia />
+        <AddMedia addMediaSubmit={addMediaSubmit} />
       </ContentLayout>
     </>
-  )
-}
-export default AddPage
+  );
+};
+export default AddPage;

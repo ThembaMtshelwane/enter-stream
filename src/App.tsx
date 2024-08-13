@@ -12,8 +12,20 @@ import SeriesPage from "./pages/SeriesPage";
 import NotFoundPage from "./pages/NotFoundPage";
 import AddPage from "./pages/AddPage";
 import SingleMediaPage, { mediaLoader } from "./pages/SingleMediaPage";
+import { MediaData } from "./definitions";
 
 export default function App() {
+  const addMedia = async (newMedia: MediaData) => {
+    const res = await fetch(`http://localhost:8080/${newMedia.type}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newMedia),
+    });
+    return;
+  };
+
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={<MainLayout />}>
@@ -21,7 +33,7 @@ export default function App() {
 
         <Route path="/movies" element={<MoviesPage />} />
         <Route path="/series" element={<SeriesPage />} />
-        <Route path="/add" element={<AddPage />} />
+        <Route path="/add" element={<AddPage addMediaSubmit={addMedia} />} />
         <Route
           path="/:type/:id"
           element={<SingleMediaPage />}

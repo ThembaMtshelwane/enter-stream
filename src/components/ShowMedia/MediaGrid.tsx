@@ -14,6 +14,7 @@ const MediaGrid = ({ type, isHome = false }: Props) => {
         const apiURL = isHome
           ? `http://localhost:8080/${type}?_limit=8`
           : `http://localhost:8080/${type}`;
+        // const apiURL = isHome ? `/api/${type}?_limit=8` : `/api/${type}`;
         const res = await fetch(apiURL);
         const data = await res.json();
         setMediaData(data);
@@ -26,7 +27,6 @@ const MediaGrid = ({ type, isHome = false }: Props) => {
     fetchMedia();
   }, []);
 
-  // console.log(`http://localhost:8080/${type}/`)
   const media = mediaData.map((media: MediaData) => {
     return (
       <section key={media.id} className="h-[300px] border-2 border-red-800">

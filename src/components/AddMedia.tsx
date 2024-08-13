@@ -1,12 +1,18 @@
 import { useEffect, useRef, useState } from "react";
 import { FaPlus } from "react-icons/fa";
-import { CountryData } from "../definitions";
+import { CountryData, isMediaData, MediaData } from "../definitions";
 import { generateYearRange, sortCountries } from "../utilis";
+import { useNavigate } from "react-router-dom";
 
-const AddMedia = () => {
+type Props = {
+  addMediaSubmit: (data: MediaData) => void;
+};
+
+const AddMedia = ({ addMediaSubmit }: Props) => {
   const [imageData, setImageData] = useState("");
   const [countries, setCountries] = useState([]);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchCountries = async () => {
@@ -27,7 +33,6 @@ const AddMedia = () => {
     const file = event.target.files?.[0];
     if (file) {
       const reader = new FileReader();
-      console.log(reader.result as string);
       reader.onload = () => {
         setImageData(reader.result as string);
       };
@@ -35,15 +40,21 @@ const AddMedia = () => {
     }
   };
 
-  console.log(imageData);
-
   const submitForm = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     const formData = new FormData(event.currentTarget);
-    const payload = Object.fromEntries(formData);
+    const payload = Object.fromEntries(formData) as {
+      [key: string]: FormDataEntryValue;
+    };
     payload.imageURL = imageData;
-    console.log(payload);
+
+    if (isMediaData(payload)) {
+      addMediaSubmit(payload);
+      navigate(`/${payload.type}`);
+    } else {
+      console.error("Invalid payload", payload);
+    }
   };
 
   const oderedCountryList = sortCountries(countries);
@@ -91,9 +102,10 @@ const AddMedia = () => {
         onSubmit={submitForm}
         className="px-4 py-2 border-2 border-black grid gap-4"
       >
-        <label htmlFor="">
+        <label htmlFor="name">
           <p>Movie/Series name</p>
           <input
+            id="name"
             type="text"
             placeholder="Movies/ Series name"
             name="name"
@@ -111,40 +123,50 @@ const AddMedia = () => {
           required
         />
 
-        <label htmlFor="">
+        <label htmlFor="description">
           <p>Description</p>
           <textarea
             className="h-[120px]"
             placeholder="Movies/ Series Description"
             name="description"
+            id="description"
             required
           />
         </label>
 
-        <label htmlFor="">
+        <label htmlFor="country">
           <p>Country</p>
-          <select name="country" required>
+          <select name="country" id="country" required>
             {countriesOptions}
           </select>
         </label>
 
-        <label htmlFor="">
+        <label htmlFor="year">
           <p>Year</p>
-          <select name="year" required>
+          <select name="year" required id="year">
             {yearOptions}
           </select>
         </label>
 
         <section className="border-2 border-black grid grid-cols-2">
-          <label htmlFor="" className="grid grid-cols-[0.2fr_1fr] items-center">
-            <input name="type" value="movie" type="radio" required />
+          <label
+            htmlFor="movie"
+            className="grid grid-cols-[0.2fr_1fr] items-center"
+          >
+            <input id="movie" name="type" value="movie" type="radio" required />
             <p className="mb-0">Movie</p>
           </label>
           <label
-            htmlFor=""
+            htmlFor="series"
             className="items-center justify-items-start grid grid-cols-[0.2fr_1fr]"
           >
-            <input name="type" value="series" type="radio" required />
+            <input
+              id="series"
+              name="type"
+              value="series"
+              type="radio"
+              required
+            />
             <p className="mb-0">Series</p>
           </label>
         </section>
