@@ -11,6 +11,9 @@ type Props = {
 
 const EditMedia = ({ oldData, editMediaSubmit }: Props) => {
   const [imageData, setImageData] = useState(oldData.imageURL);
+  const [selectedCountry, setSelectedCountry] = useState(oldData.country);
+  const [selectedType, setSelectedType] = useState(oldData.type);
+
   const [countries, setCountries] = useState([]);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
   const navigate = useNavigate();
@@ -39,7 +42,7 @@ const EditMedia = ({ oldData, editMediaSubmit }: Props) => {
     }
   };
 
-  const submitForm = (event: React.FormEvent<HTMLFormElement>) => {
+  const submitForm = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     const formData = new FormData(event.currentTarget);
@@ -48,9 +51,10 @@ const EditMedia = ({ oldData, editMediaSubmit }: Props) => {
     };
     payload.id = oldData.id;
     payload.imageURL = imageData;
+    payload.country = selectedCountry;
 
     if (isMediaData(payload)) {
-      editMediaSubmit(payload);
+      await editMediaSubmit(payload);
       if (payload.type === "movie") {
         return navigate(`/movies/${oldData.id}`);
       }
@@ -64,7 +68,7 @@ const EditMedia = ({ oldData, editMediaSubmit }: Props) => {
 
   const countriesOptions = oderedCountryList.map((country: CountryData) => {
     return (
-      <option key={country.name.common} defaultValue={country.name.common}>
+      <option key={country.name.common} value={country.name.common}>
         {country.name.common}
       </option>
     );
@@ -126,8 +130,8 @@ const EditMedia = ({ oldData, editMediaSubmit }: Props) => {
             name="imageURL"
             ref={fileInputRef}
             onChange={handleFileChange}
-            required
-            //   defaultValue={imageData}
+            // required
+            // defaultValue={oldData.imageURL}
           />
 
           <label htmlFor="description">
@@ -147,7 +151,8 @@ const EditMedia = ({ oldData, editMediaSubmit }: Props) => {
             <select
               name="country"
               id="country"
-              defaultValue={oldData.country}
+              value={selectedCountry}
+              onChange={(e) => setSelectedCountry(e.target.value)}
               required
             >
               {countriesOptions}
@@ -169,8 +174,10 @@ const EditMedia = ({ oldData, editMediaSubmit }: Props) => {
               <input
                 id="movie"
                 name="type"
-                defaultValue={oldData.type}
                 type="radio"
+                value="movie"
+                checked={selectedType === "movie"}
+                onChange={(e) => setSelectedType(e.target.value)}
                 required
               />
               <p className="mb-0">Movie</p>
@@ -182,14 +189,19 @@ const EditMedia = ({ oldData, editMediaSubmit }: Props) => {
               <input
                 id="series"
                 name="type"
-                defaultValue={oldData.type}
                 type="radio"
+                value="series"
+                checked={selectedType === "series"}
+                onChange={(e) => setSelectedType(e.target.value)}
                 required
               />
               <p className="mb-0">Series</p>
             </label>
           </section>
-          <button className="bg-button py-2 text-white rounded-2xl">
+          <button
+            type="submit"
+            className="bg-button py-2 text-white rounded-2xl"
+          >
             Save
           </button>
         </form>

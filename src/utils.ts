@@ -26,3 +26,8 @@ export const generateYearRange = () => {
   }
   return yearRange;
 };
+
+export const notType = (type: string) => {
+  if (type === "movie") return "series";
+  return "movie";
+};
