@@ -5,7 +5,7 @@ type Props = { type: string };
 
 const ShowAllMedia = ({ type }: Props) => {
   return (
-    <section className="border-2 border-blue-600  my-4 min-h-screen grid grid-cols-1 grid-rows-[70px_10fr] mx-auto sm:grid-rows-[100px_10fr] w-full sm:w-[90%] md:w-[80%] lg:w-[80%]">
+    <section className="my-4 min-h-screen grid grid-cols-1 grid-rows-[70px_10fr] mx-auto sm:grid-rows-[100px_10fr] w-full sm:w-[90%] md:w-[80%] lg:w-[80%]">
       <Button
         name="add"
         link="/add"
