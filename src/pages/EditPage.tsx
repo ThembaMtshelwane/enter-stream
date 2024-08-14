@@ -11,7 +11,7 @@ const EditPage = ({ editMediaSubmit }: Props) => {
 
   return (
     <>
-      <Header headerStyles="bg-blue-200" heading={`Edit ${media.name}`} />
+      <Header headerImage={media.imageURL} heading={`Edit ${media.name}`} />
       <ContentLayout gridStyles="">
         <EditMedia oldData={media} editMediaSubmit={editMediaSubmit} />
       </ContentLayout>

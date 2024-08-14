@@ -31,9 +31,11 @@ const SingleMediaPage = ({ deleteMedia }: Props) => {
     // toast.success(`${type} deleted successfully `);
     return navigate(`/${type}`);
   };
+
   return (
     <>
-      <Header headerStyles="bg-purple-200" heading={media.name} />
+      <Header headerImage={media.imageURL} heading={media.name} />
+
       <ContentLayout gridStyles={"grid-cols-1"}>
         <section className=" h-fit min-h-screen md:h-[120vh] flex  my-4 mx-auto w-full sm:p-5 sm:w-[100%] md:w-[95%] lg:w-[80%]">
           <section className=" sm:h-[50%]  w-[90%] sm:w-full mx-auto justify-center gap-4 flex flex-col  sm:flex-row my-10">

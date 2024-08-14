@@ -10,7 +10,7 @@ type Props = {
 const AddPage = ({ addMediaSubmit }: Props) => {
   return (
     <>
-      <Header headerStyles="bg-blue-200" heading="Add Movie/Series" />
+      <Header headerImage="bg-blue-200" heading="Add Movie/Series" />
       <ContentLayout gridStyles="">
         <AddMedia addMediaSubmit={addMediaSubmit} />
       </ContentLayout>
