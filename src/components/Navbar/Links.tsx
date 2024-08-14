@@ -6,9 +6,7 @@ type Props = {
 
 const Links = ({ styles }: Props) => {
   return (
-    <ul
-      className={`${styles} grid gap-4 items-center w-[100%] h-fit uppercase `}
-    >
+    <ul className={`${styles} grid gap-4 items-center w-full h-fit uppercase`}>
       <li className="">
         <Link className="nav-link nav-link-border sm:border-none" to="movies">
           movies

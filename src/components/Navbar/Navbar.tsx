@@ -1,20 +1,20 @@
-import { useState } from 'react'
-import Button from '../Buttons/Button'
-import Links from './Links'
-import Logo from './Logo'
-import { TiThMenu } from 'react-icons/ti'
-import { IoClose } from 'react-icons/io5'
+import { useState } from "react";
+import Button from "../Buttons/Button";
+import Links from "./Links";
+import Logo from "./Logo";
+import { TiThMenu } from "react-icons/ti";
+import { IoClose } from "react-icons/io5";
 
 const Navbar = () => {
-  const [toggleMenu, setToggleMenu] = useState(false)
-  const [navCols, seNavCols] = useState('grid-cols-2')
-  const [overlap, setOverlap] = useState('')
+  const [toggleMenu, setToggleMenu] = useState(false);
+  const [navCols, seNavCols] = useState("grid-cols-2");
+  const [overlap, setOverlap] = useState("");
 
   return (
     <nav
       className={` grid items-center text-lg ${navCols} h-fit sm:grid-cols-3  sm:text-xl md:text-xl absolute w-full p-4 text-white`}
     >
-      <Logo styles={`${overlap}`} logoStyle={'text-blue-600'} />
+      <Logo styles={`${overlap}  ml-[15%]`} logoStyle={"text-blue-600"} />
       <Links styles="hidden justify-items-center justify-self-center max-w-xs sm:grid sm:grid-cols-2" />
       <Button
         name="subscribe"
@@ -29,9 +29,9 @@ const Navbar = () => {
           <button
             className="nav-link-border "
             onClick={() => {
-              setToggleMenu((prevState) => !prevState)
-              seNavCols('grid-cols-2')
-              setOverlap('')
+              setToggleMenu((prevState) => !prevState);
+              seNavCols("grid-cols-2");
+              setOverlap("");
             }}
           >
             <IoClose />
@@ -47,16 +47,16 @@ const Navbar = () => {
         <button
           className="ml-auto mr-[15%] sm:hidden text-white"
           onClick={() => {
-            setToggleMenu((prevState) => !prevState)
-            seNavCols('grid-cols-1')
-            setOverlap('col-[1/2] row-span-full')
+            setToggleMenu((prevState) => !prevState);
+            seNavCols("grid-cols-1");
+            setOverlap("col-[1/2] row-span-full");
           }}
         >
           <TiThMenu />
         </button>
       )}
     </nav>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;

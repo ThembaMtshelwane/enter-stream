@@ -6,8 +6,8 @@ type Props = {
 };
 const Logo = ({ styles, logoStyle }: Props) => {
   return (
-    <Link to="/" className={`${styles} ml-[15%]`}>
-      <p className="text-3xl  md:text-4xl ">
+    <Link to="/" className={`${styles} w-fit`}>
+      <p className="text-2xl  md:text-3xl ">
         <span className={`${logoStyle} `}>Enter-</span>
         <span>Steam</span>
       </p>
