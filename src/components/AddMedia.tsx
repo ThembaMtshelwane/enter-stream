@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { FaPlus } from "react-icons/fa";
 import { CountryData, isMediaData, MediaData } from "../definitions";
-import { generateYearRange, sortCountries } from "../utils";
+import { generateYearRange, genres, sortCountries } from "../utils";
 import { useNavigate } from "react-router-dom";
 
 type Props = {
@@ -11,6 +11,8 @@ type Props = {
 const AddMedia = ({ addMediaSubmit }: Props) => {
   const [imageData, setImageData] = useState("");
   const [countries, setCountries] = useState([]);
+  const [selectedGenres, setSelectedGenres] = useState<string[]>([]);
+
   const fileInputRef = useRef<HTMLInputElement | null>(null);
   const navigate = useNavigate();
 
@@ -21,13 +23,20 @@ const AddMedia = ({ addMediaSubmit }: Props) => {
         const data = await res.json();
         setCountries(data);
       } catch (error) {
-        console.log("Error fetching data", error);
-      } finally {
-        // setIsLoading(false)
+        console.error("Error fetching data", error);
       }
     };
     fetchCountries();
   }, []);
+
+  const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const genre = event.target.value;
+    setSelectedGenres((prevSelected) =>
+      prevSelected.includes(genre)
+        ? prevSelected.filter((item) => item !== genre)
+        : [...prevSelected, genre]
+    );
+  };
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
@@ -44,9 +53,13 @@ const AddMedia = ({ addMediaSubmit }: Props) => {
     event.preventDefault();
 
     const formData = new FormData(event.currentTarget);
+    const genreString = selectedGenres.join(",");
+    formData.append("genre", genreString);
     const payload = Object.fromEntries(formData) as {
       [key: string]: FormDataEntryValue;
     };
+    console.log("payload", payload);
+
     payload.imageURL = imageData;
 
     if (isMediaData(payload)) {
@@ -133,6 +146,30 @@ const AddMedia = ({ addMediaSubmit }: Props) => {
               id="description"
               required
             />
+          </label>
+
+          <label htmlFor="">
+            <p>Gener/s</p>
+            <div className="border-2 border-red-700">
+              <label htmlFor="genre-selector">
+                <div id="genre-selector" className="flex flex-wrap">
+                  {genres.map((genre) => (
+                    <label
+                      key={genre}
+                      className="flex items-center border-2 border-blue-800 w-fit"
+                    >
+                      <input
+                        type="checkbox"
+                        value={genre}
+                        checked={selectedGenres.includes(genre)}
+                        onChange={handleCheckboxChange}
+                      />
+                      <p className="w-[200px]"> {genre}</p>
+                    </label>
+                  ))}
+                </div>
+              </label>
+            </div>
           </label>
 
           <label htmlFor="country">

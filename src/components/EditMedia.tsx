@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { CountryData, isMediaData, MediaData } from "../definitions";
 import { FaPlus } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-import { generateYearRange, sortCountries } from "../utils";
+import { generateYearRange, genres, sortCountries } from "../utils";
 
 type Props = {
   oldData: MediaData;
@@ -13,10 +13,12 @@ const EditMedia = ({ oldData, editMediaSubmit }: Props) => {
   const [imageData, setImageData] = useState(oldData.imageURL);
   const [selectedCountry, setSelectedCountry] = useState(oldData.country);
   const [selectedType, setSelectedType] = useState(oldData.type);
-
+  const [selectedGenres, setSelectedGenres] = useState<string[]>([]);
   const [countries, setCountries] = useState([]);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
   const navigate = useNavigate();
+
+  console.log(oldData.genre);
 
   useEffect(() => {
     const fetchCountries = async () => {
@@ -42,16 +44,29 @@ const EditMedia = ({ oldData, editMediaSubmit }: Props) => {
     }
   };
 
+  const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const genre = event.target.value;
+    setSelectedGenres((prevSelected) =>
+      prevSelected.includes(genre)
+        ? prevSelected.filter((item) => item !== genre)
+        : [...prevSelected, genre]
+    );
+  };
+
   const submitForm = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     const formData = new FormData(event.currentTarget);
+    const genreString = selectedGenres.join(",");
+    formData.append("genre", genreString);
     const payload = Object.fromEntries(formData) as {
       [key: string]: FormDataEntryValue;
     };
     payload.id = oldData.id;
     payload.imageURL = imageData;
     payload.country = selectedCountry;
+
+    console.log("new", payload.genres);
 
     if (isMediaData(payload)) {
       await editMediaSubmit(payload);
@@ -144,6 +159,30 @@ const EditMedia = ({ oldData, editMediaSubmit }: Props) => {
               required
               defaultValue={oldData.description}
             />
+          </label>
+
+          <label htmlFor="">
+            <p>Gener/s</p>
+            <div className="border-2 border-red-700">
+              <label htmlFor="genre-selector">
+                <div id="genre-selector" className="flex flex-wrap">
+                  {genres.map((genre) => (
+                    <label
+                      key={genre}
+                      className="flex items-center border-2 border-blue-800 w-fit"
+                    >
+                      <input
+                        type="checkbox"
+                        value={genre}
+                        checked={selectedGenres.includes(genre)}
+                        onChange={handleCheckboxChange}
+                      />
+                      <p className="w-[200px]"> {genre}</p>
+                    </label>
+                  ))}
+                </div>
+              </label>
+            </div>
           </label>
 
           <label htmlFor="country">

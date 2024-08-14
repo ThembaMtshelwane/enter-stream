@@ -102,7 +102,7 @@ export const editMedia = async (updatedMedia: MediaData) => {
       if (!updateRes.ok) {
         throw new Error("Failed to update media");
       }
-      alert("Media deleted successfully");
+      alert("Media edited successfully");
     } else {
       // Media does not exist, handle accordingly
       console.warn("Media does not exist at the specified endpoint.");
@@ -117,3 +117,13 @@ export const editMedia = async (updatedMedia: MediaData) => {
     alert("Failed to edit media");
   }
 };
+
+export const genres = [
+  "Action",
+  "Comedy",
+  "Drama",
+  "Horror",
+  "Sci-Fi",
+  "Romance",
+  "Documentary",
+];
