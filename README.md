@@ -3,24 +3,57 @@
 **Enter-Stream** is a demo streaming platform website built with React.js and Tailwind CSS. The site allows users to view a list of movies and series, as well as add, delete, and edit information about them. This project was implemented based on a [Figma design](https://www.figma.com/design/KcS8Gjwlfkm1PkCGLUBF1k/Untitled?node-id=8-270&t=ipdqPwcNJ1WfSmf7-0), showcasing practical application of design-to-code workflows.
 
 <!-- Carousel Container -->
-<div style="position: relative; max-width: 600px; margin: auto; overflow: hidden;">
+<div
+  style="
+    position: relative;
+    max-width: 350px;
+    margin: auto;
+    overflow: hidden;
+    height: 500px;
+  "
+>
   <!-- Slides -->
-  <div class="carousel-slides" style="display: flex; transition: transform 0.5s ease;">
-    <img src="public/images//image1.png" style="width: 100%; flex: 1;"/>
-    <img src="public/images/image2.png" style="width: 100%; flex: 1;"/>
-    <img src="public/images//image3.png" style="width: 100%; flex: 1;"/>
-    <img src="public/images/image4.png" style="width: 100%; flex: 1;"/>
-    <!-- Add more images as needed -->
+  <div
+    class="carousel-slides"
+    style="display: flex; transition: transform 0.5s ease; height: 100%"
+  >
+    <img src="public/images/image1.png" style="width: 100%; flex: 1" />
+    <img src="public/images/image2.png" style="width: 100%" />
+    <img src="public/images/image3.png" style="width: 100%" />
+    <img src="public/images/image4.png" style="width: 100%" />
   </div>
   <!-- Navigation -->
-  <a class="prev" onclick="moveSlides(-1)" style="position: absolute; top: 50%; left: 0; background-color: rgba(0,0,0,0.5); color: white; padding: 10px;">&#10094;</a>
-  <a class="next" onclick="moveSlides(1)" style="position: absolute; top: 50%; right: 0; background-color: rgba(0,0,0,0.5); color: white; padding: 10px;">&#10095;</a>
+  <a
+    class="prev"
+    onclick="moveSlides(-1)"
+    style="
+      position: absolute;
+      top: 50%;
+      left: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      color: white;
+      padding: 10px;
+    "
+    >&#10094;</a
+  >
+  <a
+    class="next"
+    onclick="moveSlides(1)"
+    style="
+      position: absolute;
+      top: 50%;
+      right: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      color: white;
+      padding: 10px;
+    "
+    >&#10095;</a
+  >
 </div>
 
 <!-- Carousel Script -->
 <script>
   let slideIndex = 0;
-
   function showSlides(n) {
     const slides = document.querySelector(".carousel-slides");
     const slideCount = slides.children.length;
@@ -28,11 +61,9 @@
     if (n < 0) slideIndex = slideCount - 1;
     slides.style.transform = `translateX(${-slideIndex * 100}%)`;
   }
-
   function moveSlides(n) {
-    showSlides(slideIndex += n);
+    showSlides((slideIndex += n));
   }
-
   // Initialize the carousel
   showSlides(slideIndex);
 </script>
