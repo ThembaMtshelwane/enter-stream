@@ -17,6 +17,9 @@ const SingleMediaPage = ({ deleteMedia }: Props) => {
   const media = useLoaderData() as MediaData;
   const { type } = useParams();
   const navigate = useNavigate();
+
+  // setgenreArray(media.genre.spit(","));
+
   const onDeleteClick = (id: string, type: string) => {
     const confirm = window.confirm(
       `Are you sure you want to delete this ${type} `
@@ -32,6 +35,18 @@ const SingleMediaPage = ({ deleteMedia }: Props) => {
     return navigate(`/${type}`);
   };
 
+  const showGenreListItems = JSON.parse(media.genre).map(
+    (genre: string, index: number, array: string[]) => {
+      const isLastItem = index === array.length - 1;
+      return (
+        <li key={index} className="mr-1">
+          {genre}
+          {!isLastItem && ", "}
+        </li>
+      );
+    }
+  );
+
   return (
     <>
       <Header headerImage={media.imageURL} heading={media.name} />
@@ -39,7 +54,7 @@ const SingleMediaPage = ({ deleteMedia }: Props) => {
       <ContentLayout gridStyles={"grid-cols-1"}>
         <section className=" h-fit min-h-screen md:h-[120vh] flex  my-4 mx-auto w-full sm:p-5 sm:w-[100%] md:w-[95%] lg:w-[80%]">
           <section className=" sm:h-[50%]  w-[90%] sm:w-full mx-auto justify-center gap-4 flex flex-col  sm:flex-row my-10">
-            <div className="">
+            <div className="h-[500px]">
               <img
                 className="w-[380px] h-full mx-auto"
                 src={media.imageURL}
@@ -55,9 +70,10 @@ const SingleMediaPage = ({ deleteMedia }: Props) => {
                   <span className="font-semibold">Country:</span>{" "}
                   <span>{media.country}</span>{" "}
                 </p>
-                <p>
-                  <span className="font-semibold">Genre:</span>{" "}
-                  <span> {media.genre}</span>
+                <p className="flex ">
+                  <span className="font-semibold mr-1">Genre:</span>
+                  {"  "}
+                  <ul className="flex">{showGenreListItems}</ul>
                 </p>
                 <p>
                   <span className="font-semibold">Year:</span>{" "}

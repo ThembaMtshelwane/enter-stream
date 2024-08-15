@@ -1,8 +1,13 @@
 import React, { useEffect, useRef, useState } from "react";
-import { CountryData, isMediaData, MediaData } from "../definitions";
+import { CountryData, MediaData } from "../definitions";
 import { FaPlus } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-import { generateYearRange, genres, sortCountries } from "../utils";
+import {
+  generateYearRange,
+  genres,
+  isMediaData,
+  sortCountries,
+} from "../utils";
 
 type Props = {
   oldData: MediaData;
@@ -18,7 +23,7 @@ const EditMedia = ({ oldData, editMediaSubmit }: Props) => {
   const fileInputRef = useRef<HTMLInputElement | null>(null);
   const navigate = useNavigate();
 
-  console.log(oldData.genre);
+  // console.log(oldData.genre);
 
   useEffect(() => {
     const fetchCountries = async () => {
@@ -100,7 +105,7 @@ const EditMedia = ({ oldData, editMediaSubmit }: Props) => {
   return (
     <section className="h-fit min-h-screen md:h-[120vh] flex  my-4 mx-auto w-full sm:p-5 sm:w-[100%] md:w-[95%] lg:w-[80%]">
       <section className=" h-fit w-[90%] sm:w-full mx-auto justify-center gap-4 flex flex-col  sm:flex-row my-10">
-        <section className=" h-[580px]">
+        <section className=" h-[500px]">
           {imageData ? (
             <img
               src={imageData}
@@ -162,15 +167,12 @@ const EditMedia = ({ oldData, editMediaSubmit }: Props) => {
           </label>
 
           <label htmlFor="">
-            <p>Gener/s</p>
-            <div className="border-2 border-red-700">
+            <p>Gener/s:</p>
+            <div>
               <label htmlFor="genre-selector">
                 <div id="genre-selector" className="flex flex-wrap">
                   {genres.map((genre) => (
-                    <label
-                      key={genre}
-                      className="flex items-center border-2 border-blue-800 w-fit"
-                    >
+                    <label key={genre} className="flex items-center w-fit">
                       <input
                         type="checkbox"
                         value={genre}

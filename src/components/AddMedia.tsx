@@ -1,7 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 import { FaPlus } from "react-icons/fa";
-import { CountryData, isMediaData, MediaData } from "../definitions";
-import { generateYearRange, genres, sortCountries } from "../utils";
+import { CountryData, MediaData } from "../definitions";
+import {
+  generateYearRange,
+  genres,
+  isMediaData,
+  sortCountries,
+} from "../utils";
 import { useNavigate } from "react-router-dom";
 
 type Props = {
@@ -53,14 +58,15 @@ const AddMedia = ({ addMediaSubmit }: Props) => {
     event.preventDefault();
 
     const formData = new FormData(event.currentTarget);
-    const genreString = selectedGenres.join(",");
-    formData.append("genre", genreString);
+    formData.append("genre", JSON.stringify(selectedGenres));
+
     const payload = Object.fromEntries(formData) as {
       [key: string]: FormDataEntryValue;
     };
-    console.log("payload", payload);
 
     payload.imageURL = imageData;
+
+    console.log("added payload", payload);
 
     if (isMediaData(payload)) {
       addMediaSubmit(payload);
@@ -72,6 +78,18 @@ const AddMedia = ({ addMediaSubmit }: Props) => {
       console.error("Invalid payload", payload);
     }
   };
+
+  const genreInputOptions = genres.map((genre: string) => (
+    <label key={genre} className="flex items-center  w-fit">
+      <input
+        type="checkbox"
+        value={genre}
+        checked={selectedGenres.includes(genre)}
+        onChange={handleCheckboxChange}
+      />
+      <p className="w-[200px]"> {genre}</p>
+    </label>
+  ));
 
   const orderedCountryList = sortCountries(countries);
 
@@ -92,9 +110,9 @@ const AddMedia = ({ addMediaSubmit }: Props) => {
   });
 
   return (
-    <section className=" h-fit min-h-screen md:h-[120vh] flex  my-4 mx-auto w-full sm:p-5 sm:w-[100%] md:w-[95%] lg:w-[80%]">
+    <section className=" h-fit min-h-screen md:h-[120vh] flex  my-4 mx-auto w-full sm:p-5 sm:w-full max-w-[1000px]">
       <section className=" w-full my-10  justify-center gap-4 flex flex-col  sm:flex-row sm:h-[50%]  sm:w-full sm:mx-auto ">
-        <section className=" min-h-[480px] w-full max-w-[380px] mx-auto sm:mx-0">
+        <section className=" min-h-[480px] max-h-[500px] w-full max-w-[380px] mx-auto sm:mx-0">
           {imageData ? (
             <img
               src={imageData}
@@ -115,7 +133,7 @@ const AddMedia = ({ addMediaSubmit }: Props) => {
             </section>
           )}
         </section>
-        <form onSubmit={submitForm} className="px-4 py-2 grid gap-4">
+        <form onSubmit={submitForm} className="px-4 py-2 grid gap-4 w-[50%]">
           <label htmlFor="name">
             <p>Movie/Series name</p>
             <input
@@ -150,23 +168,10 @@ const AddMedia = ({ addMediaSubmit }: Props) => {
 
           <label htmlFor="">
             <p>Gener/s</p>
-            <div className="border-2 border-red-700">
+            <div className="">
               <label htmlFor="genre-selector">
                 <div id="genre-selector" className="flex flex-wrap">
-                  {genres.map((genre) => (
-                    <label
-                      key={genre}
-                      className="flex items-center border-2 border-blue-800 w-fit"
-                    >
-                      <input
-                        type="checkbox"
-                        value={genre}
-                        checked={selectedGenres.includes(genre)}
-                        onChange={handleCheckboxChange}
-                      />
-                      <p className="w-[200px]"> {genre}</p>
-                    </label>
-                  ))}
+                  {genreInputOptions}
                 </div>
               </label>
             </div>
