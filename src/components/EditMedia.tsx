@@ -22,6 +22,7 @@ const EditMedia = ({ oldData, editMediaSubmit }: Props) => {
   const [countries, setCountries] = useState([]);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
   const navigate = useNavigate();
+  const [error, setError] = useState("");
 
   useEffect(() => {
     const fetchCountries = async () => {
@@ -58,6 +59,11 @@ const EditMedia = ({ oldData, editMediaSubmit }: Props) => {
 
   const submitForm = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+
+    if (selectedGenres.length === 0) {
+      setError("Please select at least one genre.");
+      return;
+    }
 
     const formData = new FormData(event.currentTarget);
     formData.append("genre", JSON.stringify(selectedGenres));
@@ -99,6 +105,20 @@ const EditMedia = ({ oldData, editMediaSubmit }: Props) => {
       </option>
     );
   });
+
+  const genreInputOptions = genres.map((genre: string) => (
+    <label htmlFor={genre} key={genre} className="flex items-center  w-fit">
+      <input
+        type="checkbox"
+        value={genre}
+        checked={selectedGenres.includes(genre)}
+        onChange={handleCheckboxChange}
+        name={genre}
+        id={genre}
+      />
+      <p className="w-[200px]"> {genre}</p>
+    </label>
+  ));
 
   return (
     <section className="h-fit min-h-screen md:h-[120vh] flex  my-4 mx-auto w-full sm:p-5 sm:w-[100%] md:w-[95%] lg:w-[80%]">
@@ -169,19 +189,10 @@ const EditMedia = ({ oldData, editMediaSubmit }: Props) => {
             <div>
               <label htmlFor="genre-selector">
                 <div id="genre-selector" className="flex flex-wrap">
-                  {genres.map((genre) => (
-                    <label key={genre} className="flex items-center w-fit">
-                      <input
-                        type="checkbox"
-                        value={genre}
-                        checked={selectedGenres.includes(genre)}
-                        onChange={handleCheckboxChange}
-                      />
-                      <p className="w-[200px]"> {genre}</p>
-                    </label>
-                  ))}
+                  {genreInputOptions}
                 </div>
               </label>
+              {error && <p className="text-red-500">{error}</p>}
             </div>
           </label>
 

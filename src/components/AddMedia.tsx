@@ -17,6 +17,7 @@ const AddMedia = ({ addMediaSubmit }: Props) => {
   const [imageData, setImageData] = useState("");
   const [countries, setCountries] = useState([]);
   const [selectedGenres, setSelectedGenres] = useState<string[]>([]);
+  const [error, setError] = useState("");
 
   const fileInputRef = useRef<HTMLInputElement | null>(null);
   const navigate = useNavigate();
@@ -56,7 +57,10 @@ const AddMedia = ({ addMediaSubmit }: Props) => {
 
   const submitForm = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
+    if (selectedGenres.length === 0) {
+      setError("Please select at least one genre.");
+      return;
+    }
     const formData = new FormData(event.currentTarget);
     formData.append("genre", JSON.stringify(selectedGenres));
 
@@ -80,12 +84,14 @@ const AddMedia = ({ addMediaSubmit }: Props) => {
   };
 
   const genreInputOptions = genres.map((genre: string) => (
-    <label key={genre} className="flex items-center  w-fit">
+    <label htmlFor={genre} key={genre} className="flex items-center  w-fit">
       <input
         type="checkbox"
         value={genre}
         checked={selectedGenres.includes(genre)}
         onChange={handleCheckboxChange}
+        name={genre}
+        id={genre}
       />
       <p className="w-[200px]"> {genre}</p>
     </label>
@@ -174,6 +180,7 @@ const AddMedia = ({ addMediaSubmit }: Props) => {
                   {genreInputOptions}
                 </div>
               </label>
+              {error && <p className="text-red-500">{error}</p>}
             </div>
           </label>
 
