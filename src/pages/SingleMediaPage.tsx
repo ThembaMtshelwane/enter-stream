@@ -3,6 +3,7 @@ import Header from "../components/Header";
 import { Link, useLoaderData, useParams } from "react-router-dom";
 import { MediaData } from "../definitions";
 import { useNavigate } from "react-router-dom";
+import { LoaderFunctionArgs } from "react-router-dom";
 
 type Params = {
   id: string;
@@ -18,7 +19,7 @@ const SingleMediaPage = ({ deleteMedia }: Props) => {
   const { type } = useParams();
   const navigate = useNavigate();
 
-  // setgenreArray(media.genre.spit(","));
+  console.log(media.genre);
 
   const onDeleteClick = (id: string, type: string) => {
     const confirm = window.confirm(
@@ -106,8 +107,9 @@ const SingleMediaPage = ({ deleteMedia }: Props) => {
   );
 };
 
-const mediaLoader = async ({ params }: { params: Params }) => {
-  const res = await fetch(`http://localhost:8080/${params.type}/${params.id}`);
+const mediaLoader = async ({ params }: LoaderFunctionArgs) => {
+  const { id, type } = params as Params;
+  const res = await fetch(`http://localhost:8080/${type}/${id}`);
   const data: MediaData = await res.json();
   return data;
 };

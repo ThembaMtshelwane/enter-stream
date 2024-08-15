@@ -128,6 +128,7 @@ export const genres = [
   "Documentary",
   "Mystery",
   "Fantasy",
+  "Thriller",
 ];
 
 export const isMediaData = (data: any): data is MediaData => {
