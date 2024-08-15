@@ -7,7 +7,7 @@ import {
 
 import HomePage from "./pages/HomePage";
 import MainLayout from "./layouts/MainLayout";
-import MoviesPage, { allMovieMediaLoader } from "./pages/MoviesPage";
+import MoviesPage from "./pages/MoviesPage";
 import SeriesPage from "./pages/SeriesPage";
 import NotFoundPage from "./pages/NotFoundPage";
 import AddPage from "./pages/AddPage";
