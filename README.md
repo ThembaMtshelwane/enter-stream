@@ -1,6 +1,41 @@
 # Enter-Stream
 
-**Enter-Stream** is a demo streaming platform website built with React.js, Tailwind CSS, and CSS Grid. The site allows users to view a list of movies and series, as well as add, delete, and edit information about them. This project was implemented based on a Figma design, showcasing practical application of design-to-code workflows.
+**Enter-Stream** is a demo streaming platform website built with React.js and Tailwind CSS. The site allows users to view a list of movies and series, as well as add, delete, and edit information about them. This project was implemented based on a [Figma design](https://www.figma.com/design/KcS8Gjwlfkm1PkCGLUBF1k/Untitled?node-id=8-270&t=ipdqPwcNJ1WfSmf7-0), showcasing practical application of design-to-code workflows.
+
+<!-- Carousel Container -->
+<div style="position: relative; max-width: 600px; margin: auto; overflow: hidden;">
+  <!-- Slides -->
+  <div class="carousel-slides" style="display: flex; transition: transform 0.5s ease;">
+    <img src="images/image1.png" style="width: 100%; flex: 1;"/>
+    <img src="images/image2.png" style="width: 100%; flex: 1;"/>
+    <img src="images/image3.png" style="width: 100%; flex: 1;"/>
+    <img src="images/image4.png" style="width: 100%; flex: 1;"/>
+    <!-- Add more images as needed -->
+  </div>
+  <!-- Navigation -->
+  <a class="prev" onclick="moveSlides(-1)" style="position: absolute; top: 50%; left: 0; background-color: rgba(0,0,0,0.5); color: white; padding: 10px;">&#10094;</a>
+  <a class="next" onclick="moveSlides(1)" style="position: absolute; top: 50%; right: 0; background-color: rgba(0,0,0,0.5); color: white; padding: 10px;">&#10095;</a>
+</div>
+
+<!-- Carousel Script -->
+<script>
+  let slideIndex = 0;
+
+  function showSlides(n) {
+    const slides = document.querySelector(".carousel-slides");
+    const slideCount = slides.children.length;
+    if (n >= slideCount) slideIndex = 0;
+    if (n < 0) slideIndex = slideCount - 1;
+    slides.style.transform = `translateX(${-slideIndex * 100}%)`;
+  }
+
+  function moveSlides(n) {
+    showSlides(slideIndex += n);
+  }
+
+  // Initialize the carousel
+  showSlides(slideIndex);
+</script>
 
 ## Features
 
@@ -40,7 +75,7 @@
 1. **Clone the repository:**
 
    ```bash
-   git clone https://github.com/your-username/enter-stream.git
+   git clone https://github.com/ThembaMtshelwane/enter-stream.git
    cd enter-stream
 
    ```
