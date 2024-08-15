@@ -12,7 +12,7 @@ const Links = ({ styles }: Props) => {
           className={({ isActive }) =>
             isActive
               ? "nav-link nav-link-border sm:border-none text-[#7379FF]"
-              : ""
+              : "nav-link  nav-link-border sm:border-none"
           }
           to="movies"
         >
@@ -24,7 +24,7 @@ const Links = ({ styles }: Props) => {
           className={({ isActive }) =>
             isActive
               ? "nav-link nav-link-border sm:border-none text-[#7379FF]"
-              : ""
+              : "nav-link  nav-link-border sm:border-none"
           }
           to="series"
         >

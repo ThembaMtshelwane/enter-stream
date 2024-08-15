@@ -23,8 +23,6 @@ const EditMedia = ({ oldData, editMediaSubmit }: Props) => {
   const fileInputRef = useRef<HTMLInputElement | null>(null);
   const navigate = useNavigate();
 
-  // console.log(oldData.genre);
-
   useEffect(() => {
     const fetchCountries = async () => {
       try {
@@ -62,8 +60,8 @@ const EditMedia = ({ oldData, editMediaSubmit }: Props) => {
     event.preventDefault();
 
     const formData = new FormData(event.currentTarget);
-    const genreString = selectedGenres.join(",");
-    formData.append("genre", genreString);
+    formData.append("genre", JSON.stringify(selectedGenres));
+
     const payload = Object.fromEntries(formData) as {
       [key: string]: FormDataEntryValue;
     };
@@ -71,7 +69,7 @@ const EditMedia = ({ oldData, editMediaSubmit }: Props) => {
     payload.imageURL = imageData;
     payload.country = selectedCountry;
 
-    console.log("new", payload.genres);
+    console.log("new", payload);
 
     if (isMediaData(payload)) {
       await editMediaSubmit(payload);

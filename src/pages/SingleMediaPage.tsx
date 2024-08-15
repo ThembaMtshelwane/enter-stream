@@ -62,7 +62,7 @@ const SingleMediaPage = ({ deleteMedia }: Props) => {
               />
             </div>
 
-            <div className="h-fit sm:w-[50%]  flex flex-col  gap-4">
+            <div className="h-fit sm:w-[50%]  flex flex-col  gap-5">
               <h2 className="text-4xl font-bold">{media.name}</h2>
               <p className="text-justify">{media.description}</p>
               <div className="py-3">
@@ -70,11 +70,11 @@ const SingleMediaPage = ({ deleteMedia }: Props) => {
                   <span className="font-semibold">Country:</span>{" "}
                   <span>{media.country}</span>{" "}
                 </p>
-                <p className="flex ">
+                <div className="flex my-2 ">
                   <span className="font-semibold mr-1">Genre:</span>
                   {"  "}
-                  <ul className="flex">{showGenreListItems}</ul>
-                </p>
+                  <ul className="flex flex-wrap">{showGenreListItems}</ul>
+                </div>
                 <p>
                   <span className="font-semibold">Year:</span>{" "}
                   <span>{media.year}</span>{" "}
