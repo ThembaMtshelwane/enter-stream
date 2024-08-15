@@ -6,10 +6,10 @@
 <div style="position: relative; max-width: 600px; margin: auto; overflow: hidden;">
   <!-- Slides -->
   <div class="carousel-slides" style="display: flex; transition: transform 0.5s ease;">
-    <img src="images/image1.png" style="width: 100%; flex: 1;"/>
-    <img src="images/image2.png" style="width: 100%; flex: 1;"/>
-    <img src="images/image3.png" style="width: 100%; flex: 1;"/>
-    <img src="images/image4.png" style="width: 100%; flex: 1;"/>
+    <img src="public/images//image1.png" style="width: 100%; flex: 1;"/>
+    <img src="public/images/image2.png" style="width: 100%; flex: 1;"/>
+    <img src="public/images//image3.png" style="width: 100%; flex: 1;"/>
+    <img src="public/images/image4.png" style="width: 100%; flex: 1;"/>
     <!-- Add more images as needed -->
   </div>
   <!-- Navigation -->
