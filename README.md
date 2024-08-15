@@ -2,12 +2,40 @@
 
 **Enter-Stream** is a demo streaming platform website built with React.js and Tailwind CSS. The site allows users to view a list of movies and series, as well as add, delete, and edit information about them. This project was implemented based on a [Figma design](https://www.figma.com/design/KcS8Gjwlfkm1PkCGLUBF1k/Untitled?node-id=8-270&t=ipdqPwcNJ1WfSmf7-0), showcasing practical application of design-to-code workflows.
 
-<p styles= 'align="center" '>
-  <img src="public/images/image1.png" alt="Image 1" width="300"/>
-  <img src="public/images/image2.png" alt="Image 2" width="300"/>
-  <img src="public/images/image3.png" alt="Image 3" width="300"/>
-  <img src="public/images/image4.png" alt="Image 4" width="300"/>
-</p>
+<div
+  style="
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    max-width: 650px;
+    background-color: #7379ff;
+    margin: 0px auto;
+    border: 2px solid;
+    align-items: center;
+    justify-items: center;
+    gap: 20px;
+  "
+>
+  <img
+    src="public/images/image1.png"
+    alt="Image 1"
+    width="300"
+    style="transform: scale(0.9)"
+  />
+  <img
+    src="public/images/image2.png"
+    alt="Image 2"
+    width="300"
+    style="transform: scale(0.9)"
+  />
+  <img
+    src="public/images/image3.png"
+    alt="Image 3"
+    width="300"
+    style="object-fit: cover"
+  />
+  <img src="public/images/image4.png" alt="Image 4" width="300" />
+</div>
 
 ## Features
 
