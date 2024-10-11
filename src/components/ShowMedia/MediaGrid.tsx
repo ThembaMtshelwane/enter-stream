@@ -31,7 +31,7 @@ const MediaGrid = ({ type, isHome = false }: Props) => {
         <img
           src={media.imageURL}
           alt={media.name}
-          className="h-[400px] object-cover w-[350px] mx-auto"
+          className="h-[520px] object-cover w-[350px] mx-auto rounded-xl"
         />
       </Link>
     );
@@ -42,7 +42,7 @@ const MediaGrid = ({ type, isHome = false }: Props) => {
       {isLoading ? (
         <Spinner loading={isLoading} />
       ) : (
-        <section className="grid grid-cols-1 grid-rows-2 gap-2 items-center sm:grid-cols-2 sm:grid-row-2 md:grid-cols-3 lg:grid-cols-4">
+        <section className="grid grid-cols-1 grid-rows-2 gap-2 items-center sm:grid-cols-2 sm:grid-row-2 xl:grid-cols-3 2xl:grid-cols-4">
           {media}
         </section>
       )}
