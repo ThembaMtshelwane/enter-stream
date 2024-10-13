@@ -7,7 +7,8 @@ import EditMedia from "../components/EditMedia";
 type Props = { editMediaSubmit: (data: MediaData) => void };
 
 const EditPage = ({ editMediaSubmit }: Props) => {
-  const media = useLoaderData() as MediaData;
+  const data = useLoaderData() as any;
+  const media: MediaData = data.media;
 
   return (
     <>

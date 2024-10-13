@@ -59,10 +59,12 @@ export const addMedia = async (newMedia: MediaData) => {
 
 //delete media
 export const deleteMedia = async (id: string, type: string) => {
-  let serverURL = `http://localhost:8080/${type}/${id}`;
-  if (type === "movie") {
-    serverURL = `/api/movies/${id}`;
-  }
+  // let serverURL = `http://localhost:8080/${type}/${id}`;
+  // if (type === "movie") {
+  //   serverURL = `/api/movies/${id}`;
+  // }
+
+  const serverURL = `https://enter-stream-server.vercel.app/api/series/${id}`;
 
   try {
     const res = await fetch(serverURL, {

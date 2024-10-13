@@ -15,9 +15,11 @@ type Props = {
 };
 
 const SingleMediaPage = ({ deleteMedia }: Props) => {
-  const media = useLoaderData() as MediaData;
+  const data = useLoaderData() as any;
   const { type } = useParams();
   const navigate = useNavigate();
+
+  const media: MediaData = data.media;
 
   console.log(media.genre);
 
@@ -108,8 +110,10 @@ const SingleMediaPage = ({ deleteMedia }: Props) => {
 };
 
 const mediaLoader = async ({ params }: LoaderFunctionArgs) => {
-  const { id, type } = params as Params;
-  const res = await fetch(`http://localhost:8080/${type}/${id}`);
+  const { id } = params as Params;
+  const res = await fetch(
+    `https://enter-stream-server.vercel.app/api/series/${id}`
+  );
   const data: MediaData = await res.json();
   return data;
 };

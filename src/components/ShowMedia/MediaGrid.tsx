@@ -12,10 +12,10 @@ const MediaGrid = ({ type, isHome = false }: Props) => {
   useEffect(() => {
     const fetchMedia = async () => {
       try {
-        const apiURL = isHome ? `/api/${type}?_limit=8` : `/api/${type}`;
+        const apiURL = `https://enter-stream-server.vercel.app/api/series`;
         const res = await fetch(apiURL);
         const data = await res.json();
-        setMediaData(data);
+        setMediaData(data.media);
       } catch (error) {
         console.log("Error fetching data", error);
       } finally {
