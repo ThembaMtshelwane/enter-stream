@@ -12,7 +12,7 @@ const MoviesPage = () => {
         heading={'latest movies'}
       />
       <ContentLayout gridStyles={'grid-cols-1'}>
-        <ShowAllMedia type="movies" />
+        <ShowAllMedia type="movie" />
       </ContentLayout>
     </>
   )

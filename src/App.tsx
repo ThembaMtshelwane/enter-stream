@@ -14,6 +14,7 @@ import AddPage from "./pages/AddPage";
 import SingleMediaPage, { mediaLoader } from "./pages/SingleMediaPage";
 import EditPage from "./pages/EditPage";
 import { addMedia, deleteMedia, editMedia } from "./utils";
+import { MediaProvider } from "./context/MediaContext";
 
 export default function App() {
   const router = createBrowserRouter(
@@ -38,5 +39,9 @@ export default function App() {
       </Route>
     )
   ); //
-  return <RouterProvider router={router} />;
+  return (
+    <MediaProvider>
+      <RouterProvider router={router} />;
+    </MediaProvider>
+  );
 }

@@ -11,7 +11,7 @@ const HomePage = () => {
       />
       {/* Home Page layout  2by1 */}
       <ContentLayout gridStyles="grid-cols-1 grid-rows-2 gap-4">
-        <ShowSomeMedia link="/movies" name="movies" type="movies" />
+        <ShowSomeMedia link="/movies" name="movies" type="movie" />
         <ShowSomeMedia link="/series" name="series" type="series" />
       </ContentLayout>
     </>
