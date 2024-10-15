@@ -34,10 +34,7 @@ export const notType = (type: string) => {
 
 // Add media
 export const addMedia = async (newMedia: MediaData) => {
-  let serverURL = `http://localhost:8080/${newMedia.type}`;
-  if (newMedia.type === "movie") {
-    serverURL = `http://localhost:8080/movies`;
-  }
+  const serverURL = `https://enter-stream-server.vercel.app/api/`;
   try {
     const res = await fetch(serverURL, {
       method: "POST",
@@ -58,13 +55,8 @@ export const addMedia = async (newMedia: MediaData) => {
 };
 
 //delete media
-export const deleteMedia = async (id: string, type: string) => {
-  // let serverURL = `http://localhost:8080/${type}/${id}`;
-  // if (type === "movie") {
-  //   serverURL = `/api/movies/${id}`;
-  // }
-
-  const serverURL = `https://enter-stream-server.vercel.app/api/series/${id}`;
+export const deleteMedia = async (id: string) => {
+  const serverURL = `https://enter-stream-server.vercel.app/api/${id}`;
 
   try {
     const res = await fetch(serverURL, {
@@ -82,12 +74,9 @@ export const deleteMedia = async (id: string, type: string) => {
   return;
 };
 
+//edit media
 export const editMedia = async (updatedMedia: MediaData) => {
-  let serverURL = `http://localhost:8080/${updatedMedia.type}/${updatedMedia.id}`;
-  if (updatedMedia.type === "movie") {
-    serverURL = `http://localhost:8080/movies/${updatedMedia.id}`;
-  }
-
+  const serverURL = `https://enter-stream-server.vercel.app/api/${updatedMedia.id}`;
   try {
     // Check if the media exists at the specified endpoint
     const checkRes = await fetch(serverURL);
@@ -109,12 +98,12 @@ export const editMedia = async (updatedMedia: MediaData) => {
       // Media does not exist, handle accordingly
       console.warn("Media does not exist at the specified endpoint.");
       await addMedia(updatedMedia);
-      await deleteMedia(updatedMedia.id, notType(updatedMedia.type));
+      await deleteMedia(updatedMedia.id);
     }
   } catch (error) {
     console.error("An error occurred while editing media:", error);
     // If any error occurs, fallback to deleting from the old type and adding to the new type
-    await deleteMedia(updatedMedia.id, notType(updatedMedia.type));
+    await deleteMedia(updatedMedia.id);
     await addMedia(updatedMedia);
     alert("Failed to edit media");
   }

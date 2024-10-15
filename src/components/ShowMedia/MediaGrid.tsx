@@ -11,14 +11,11 @@ const MediaGrid = ({ type, isHome = false }: Props) => {
   const [media, setMedia] = useState<MediaData[]>([]);
 
   useEffect(() => {
-    console.log("type", type);
 
     const processData = () => {
       const appropriateMedia = allMediaData.filter(
         (media: MediaData) => media.type === type
       );
-
-      console.log("appropriateMedia ", appropriateMedia);
 
       const minimizedMedia = isHome
         ? appropriateMedia.slice(0, 4)
@@ -28,8 +25,6 @@ const MediaGrid = ({ type, isHome = false }: Props) => {
     };
     processData();
   }, [allMediaData, isHome, type]);
-
-  console.log("all media ", allMediaData);
 
   return (
     <>

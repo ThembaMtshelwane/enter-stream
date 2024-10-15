@@ -44,14 +44,13 @@ const AddMedia = ({ addMediaSubmit }: Props) => {
     );
   };
 
-  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFileChange = async (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
     const file = event.target.files?.[0];
     if (file) {
-      const reader = new FileReader();
-      reader.onload = () => {
-        setImageData(reader.result as string);
-      };
-      reader.readAsDataURL(file);
+      const imageRef = `images/${file.name}`;
+      setImageData(imageRef);
     }
   };
 
@@ -69,8 +68,6 @@ const AddMedia = ({ addMediaSubmit }: Props) => {
     };
 
     payload.imageURL = imageData;
-
-    console.log("added payload", payload);
 
     if (isMediaData(payload)) {
       addMediaSubmit(payload);
