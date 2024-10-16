@@ -110,7 +110,7 @@ const SingleMediaPage = ({ deleteMedia }: Props) => {
 };
 
 const mediaLoader = async ({ params }: LoaderFunctionArgs) => {
-  const { id ,type} = params as Params;
+  const { id } = params as Params;
   const res = await fetch(
     `https://enter-stream-server.vercel.app/api/${id}`
   );
